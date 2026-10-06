@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071c2c">
+  <meta name="description" content="Independent construction and architecture consultancy bringing clarity to complex projects, from first brief to final handover.">
+  <title>Northline | Construction &amp; Architecture Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #071c2c;
+      --ink-soft: #0d293c;
+      --paper: #f0f1e9;
+      --muted: #9aabb3;
+      --line: rgba(178, 213, 218, .2);
+      --cyan: #7bd7d0;
+      --lime: #d5ef82;
+      --mono: "IBM Plex Mono", monospace;
+      --sans: "DM Sans", sans-serif;
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--paper);
+      scroll-behavior: smooth;
+      scroll-padding-top: 84px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    ::selection { color: var(--ink); background: var(--lime); }
+
+    .wrap { width: min(1320px, calc(100% - 96px)); margin-inline: auto; }
+    .eyebrow { font: 500 11px/1.4 var(--mono); letter-spacing: 0; text-transform: uppercase; color: var(--cyan); }
+    .site-header { height: 76px; display: flex; align-items: center; border-bottom: 1px solid var(--line); position: relative; z-index: 3; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .brand { display: inline-flex; gap: 11px; align-items: center; font-weight: 700; font-size: 15px; letter-spacing: .08em; }
+    .brand-mark { width: 24px; height: 24px; position: relative; border: 1px solid var(--cyan); display: inline-block; transform: rotate(45deg); }
+    .brand-mark::before, .brand-mark::after { content: ""; position: absolute; background: var(--cyan); }
+    .brand-mark::before { width: 1px; height: 34px; left: 11px; top: -6px; }
+    .brand-mark::after { height: 1px; width: 34px; top: 11px; left: -6px; }
+    .nav-links { display: flex; align-items: center; gap: 34px; color: #c0cbd0; font-size: 13px; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--lime); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 14px; border: 1px solid rgba(240, 241, 233, .38); padding: 11px 15px; font-size: 12px; }
+    .nav-cta span { color: var(--lime); }
+
+    .hero { min-height: 650px; display: grid; grid-template-columns: 48% 52%; align-items: stretch; border-bottom: 1px solid var(--line); overflow: hidden; }
+    .hero-copy { padding: 100px 36px 90px max(48px, calc((100vw - 1320px) / 2)); align-self: center; position: relative; z-index: 1; }
+    .hero-copy::before { content: ""; position: absolute; left: 0; top: 18%; bottom: 10%; width: 1px; background: linear-gradient(transparent, var(--cyan), transparent); opacity: .55; }
+    .hero h1 { font-size: 72px; line-height: .99; letter-spacing: 0; font-weight: 500; max-width: 590px; margin: 26px 0 24px; }
+    .hero h1 span { color: var(--cyan); }
+    .hero-intro { color: #b2c0c7; max-width: 410px; font-size: 16px; line-height: 1.75; margin: 0; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 35px; }
+    .button-primary { background: var(--lime); color: var(--ink); padding: 15px 19px; display: inline-flex; align-items: center; gap: 24px; font-size: 13px; font-weight: 700; transition: background .2s, transform .2s; }
+    .button-primary:hover { background: #e4f6ad; transform: translateY(-2px); }
+    .text-link { color: #d1dadd; font-size: 13px; border-bottom: 1px solid rgba(209, 218, 221, .4); padding: 7px 0; }
+    .hero-image { min-height: 650px; position: relative; background: #183244; overflow: hidden; }
+    .hero-image::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--ink) 0%, rgba(7, 28, 44, .18) 40%, rgba(7, 28, 44, .1)), linear-gradient(0deg, rgba(7, 28, 44, .55), transparent 45%); }
+    .hero-image img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: center; filter: saturate(.68) brightness(.78); }
+    .hero-stamp { position: absolute; right: 8%; bottom: 7%; z-index: 2; border: 1px solid rgba(220, 241, 238, .56); padding: 13px 16px; color: #e6f1ed; font: 11px/1.7 var(--mono); text-transform: uppercase; }
+    .hero-stamp strong { color: var(--lime); font-weight: 400; }
+    .hero-grid { position: absolute; z-index: 2; inset: 12% 9% 14% 8%; opacity: .64; background-image: linear-gradient(rgba(123, 215, 208, .25) 1px, transparent 1px), linear-gradient(90deg, rgba(123, 215, 208, .25) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(110deg, transparent 2%, black 36%, black 95%); }
+    .hero-grid::before, .hero-grid::after { content: ""; position: absolute; background: var(--lime); opacity: .8; }
+    .hero-grid::before { width: 1px; height: 100%; left: 64%; }
+    .hero-grid::after { height: 1px; width: 100%; top: 39%; }
+    .hero-coord { position: absolute; top: 14%; right: 11%; z-index: 2; font: 10px var(--mono); color: #d3ebe2; }
+
+    .facts { border-bottom: 1px solid var(--line); }
+    .facts-row { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); }
+    .fact { padding: 27px 26px; border-left: 1px solid var(--line); }
+    .fact:first-child { border-left: 0; padding-left: 0; }
+    .fact strong { display: block; font-size: 16px; font-weight: 500; margin-bottom: 7px; }
+    .fact span { font: 10px var(--mono); color: var(--muted); text-transform: uppercase; }
+
+    .section { padding: 116px 0; position: relative; }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 62px; }
+    .section h2 { font-size: 48px; line-height: 1.1; font-weight: 500; letter-spacing: 0; margin: 16px 0 0; max-width: 600px; }
+    .section-head p { max-width: 430px; color: #aabac1; font-size: 14px; line-height: 1.8; margin: 0 0 4px; }
+
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .service { min-height: 310px; padding: 29px 26px 32px; border-left: 1px solid var(--line); position: relative; overflow: hidden; }
+    .service:first-child { border-left: 0; padding-left: 0; }
+    .service-num { display: flex; justify-content: space-between; font: 11px var(--mono); color: var(--cyan); }
+    .service h3 { font-size: 22px; font-weight: 500; margin: 100px 0 12px; }
+    .service p { max-width: 310px; color: #aabac1; line-height: 1.7; font-size: 13px; margin: 0; }
+    .service-art { position: absolute; top: 53px; right: 25px; width: 84px; height: 66px; opacity: .8; }
+    .service-art span { position: absolute; display: block; border: 1px solid rgba(123, 215, 208, .54); }
+    .service-art--plan span:nth-child(1) { inset: 2px 18px 18px 2px; }
+    .service-art--plan span:nth-child(2) { inset: 15px 2px 2px 21px; border-color: rgba(213, 239, 130, .65); }
+    .service-art--plan span:nth-child(3) { left: 42px; top: 0; height: 66px; border-width: 0 0 0 1px; }
+    .service-art--model span:nth-child(1) { width: 42px; height: 42px; left: 8px; top: 9px; transform: rotate(30deg) skew(-8deg); }
+    .service-art--model span:nth-child(2) { width: 42px; height: 42px; left: 31px; top: 18px; transform: rotate(30deg) skew(-8deg); border-color: rgba(213, 239, 130, .65); }
+    .service-art--model span:nth-child(3) { height: 1px; width: 72px; top: 53px; left: 4px; border-width: 1px 0 0; }
+    .service-art--build span:nth-child(1) { left: 7px; top: 7px; width: 1px; height: 55px; border-width: 0 0 0 1px; }
+    .service-art--build span:nth-child(2) { left: 26px; top: 1px; width: 1px; height: 61px; border-width: 0 0 0 1px; }
+    .service-art--build span:nth-child(3) { left: 45px; top: 15px; width: 1px; height: 47px; border-width: 0 0 0 1px; }
+    .service-art--build span:nth-child(4) { left: 64px; top: 26px; width: 1px; height: 36px; border-width: 0 0 0 1px; }
+    .service-art--build span:nth-child(5) { left: 0; top: 39px; width: 84px; height: 1px; border-width: 1px 0 0; }
+
+    .projects { background: #0b2437; overflow: hidden; }
+    .projects::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .2; background-image: linear-gradient(rgba(123, 215, 208, .11) 1px, transparent 1px), linear-gradient(90deg, rgba(123, 215, 208, .11) 1px, transparent 1px); background-size: 96px 96px; }
+    .project-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; position: relative; }
+    .project { min-height: 430px; position: relative; overflow: hidden; background: #172f41; }
+    .project img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; filter: saturate(.62) brightness(.68); transition: transform .7s; }
+    .project:hover img { transform: scale(1.035); }
+    .project::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(4, 17, 28, .92), transparent 62%); }
+    .project-info { position: absolute; z-index: 2; bottom: 27px; left: 29px; right: 29px; }
+    .project-info span { font: 10px var(--mono); text-transform: uppercase; color: var(--lime); }
+    .project-info h3 { font-size: 23px; font-weight: 500; margin: 10px 0 7px; }
+    .project-info p { color: #c1cdd0; margin: 0; font-size: 12px; }
+    .project-lines { position: absolute; z-index: 1; inset: 10% 7% 22%; opacity: .78; background-image: linear-gradient(rgba(123, 215, 208, .5) 1px, transparent 1px), linear-gradient(90deg, rgba(123, 215, 208, .5) 1px, transparent 1px); background-size: 54px 54px; mask-image: linear-gradient(120deg, transparent, black 40%, transparent 98%); }
+    .project-lines::after { content: ""; position: absolute; inset: 23% 15% 8% 29%; border: 1px solid var(--lime); transform: skewY(-12deg); }
+
+    .approach { display: grid; grid-template-columns: .8fr 1.2fr; gap: 100px; align-items: start; }
+    .approach-aside { position: relative; padding-top: 8px; }
+    .approach-aside h2 { font-size: 45px; }
+    .approach-aside p { color: #aabac1; font-size: 14px; line-height: 1.8; max-width: 340px; }
+    .approach-art { height: 155px; margin-top: 45px; position: relative; border: 1px solid var(--line); background-image: linear-gradient(rgba(123, 215, 208, .2) 1px, transparent 1px), linear-gradient(90deg, rgba(123, 215, 208, .2) 1px, transparent 1px); background-size: 30px 30px; overflow: hidden; }
+    .approach-art::before { content: ""; position: absolute; width: 62%; height: 60%; border: 1px solid var(--lime); top: 20%; left: 17%; transform: skewY(-12deg); }
+    .approach-art::after { content: "A—A   /   COORDINATION SECTION"; position: absolute; bottom: 10px; left: 12px; font: 9px var(--mono); color: var(--cyan); }
+    .steps { border-top: 1px solid var(--line); }
+    .step { display: grid; grid-template-columns: 64px 1fr 1fr; gap: 22px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: start; }
+    .step-num { font: 12px var(--mono); color: var(--cyan); }
+    .step h3 { margin: 0; font-size: 16px; font-weight: 500; }
+    .step p { margin: 0; font-size: 12px; line-height: 1.7; color: #aabac1; }
+
+    .contact { background: var(--paper); color: var(--ink); position: relative; overflow: hidden; }
+    .contact .eyebrow { color: #236a6a; }
+    .contact-row { display: flex; justify-content: space-between; align-items: end; gap: 48px; position: relative; }
+    .contact h2 { max-width: 650px; font-size: 54px; margin-top: 15px; }
+    .contact p { color: #4e626c; max-width: 375px; font-size: 14px; line-height: 1.8; margin-bottom: 4px; }
+    .contact .button-primary { background: var(--ink); color: var(--paper); flex: 0 0 auto; }
+    .contact .button-primary:hover { background: #163a50; }
+    .contact-grid { position: absolute; width: 310px; height: 210px; right: -55px; top: 20px; opacity: .5; background-image: linear-gradient(rgba(20, 91, 96, .2) 1px, transparent 1px), linear-gradient(90deg, rgba(20, 91, 96, .2) 1px, transparent 1px); background-size: 28px 28px; transform: rotate(-12deg); }
+    .footer { padding: 24px 0; border-top: 1px solid rgba(7, 28, 44, .15); background: var(--paper); color: #4e626c; }
+    .footer-row { display: flex; justify-content: space-between; gap: 24px; font: 10px var(--mono); text-transform: uppercase; }
+    .footer-brand { color: var(--ink); font: 700 12px var(--sans); letter-spacing: .08em; }
+
+    .grid-reveal { clip-path: inset(0 100% 0 0); opacity: .25; transition: clip-path 1.2s cubic-bezier(.2, .75, .2, 1), opacity .8s ease; }
+    .grid-reveal.from-right { clip-path: inset(0 0 0 100%); }
+    .grid-reveal.from-bottom { clip-path: inset(100% 0 0 0); }
+    .grid-reveal.is-visible { clip-path: inset(0); opacity: .8; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .wrap { width: min(100% - 48px, 700px); }
+      .hero { grid-template-columns: 1fr; min-height: 0; }
+      .hero-copy { padding: 82px 24px 48px; }
+      .hero-copy::before { left: 0; }
+      .hero-image { min-height: 430px; }
+      .hero h1 { font-size: 60px; }
+      .facts-row { grid-template-columns: repeat(2, 1fr); }
+      .fact, .fact:first-child { padding: 20px 14px; border-left: 1px solid var(--line); }
+      .fact:nth-child(odd) { border-left: 0; }
+      .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .section { padding: 82px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 42px; }
+      .service { padding-inline: 18px; }
+      .service h3 { font-size: 18px; }
+      .service-art { transform: scale(.78); transform-origin: top right; right: 14px; }
+      .project { min-height: 360px; }
+      .approach { grid-template-columns: 1fr; gap: 45px; }
+      .approach-art { max-width: 420px; }
+      .contact-row { align-items: start; flex-direction: column; gap: 22px; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: calc(100% - 40px); }
+      .site-header { height: 66px; }
+      .nav { gap: 12px; }
+      .nav-links { gap: 15px; font-size: 11px; }
+      .nav-links a:nth-child(2), .nav-links a:nth-child(3) { display: none; }
+      .nav-cta { padding: 9px 10px; font-size: 10px; }
+      .brand { font-size: 12px; }
+      .brand-mark { width: 19px; height: 19px; }
+      .brand-mark::before { height: 27px; left: 8px; top: -5px; }
+      .brand-mark::after { width: 27px; top: 8px; left: -5px; }
+      .hero-copy { padding: 67px 20px 40px; }
+      .hero h1 { font-size: 48px; margin: 22px 0 18px; }
+      .hero-intro { font-size: 14px; }
+      .hero-actions { gap: 17px; flex-wrap: wrap; margin-top: 26px; }
+      .button-primary { padding: 13px 15px; }
+      .hero-image { min-height: 330px; }
+      .hero-grid { background-size: 48px 48px; }
+      .hero-stamp { font-size: 9px; }
+      .facts-row { width: calc(100% - 40px); }
+      .fact strong { font-size: 14px; }
+      .fact span { font-size: 9px; }
+      .section { padding: 68px 0; }
+      .section h2, .approach-aside h2 { font-size: 36px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service, .service:first-child { min-height: 240px; padding: 24px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+      .service:last-child { border-bottom: 0; }
+      .service h3 { margin-top: 68px; font-size: 20px; }
+      .service-art { top: 37px; right: 0; transform: scale(.72); }
+      .project-grid { grid-template-columns: 1fr; }
+      .project { min-height: 330px; }
+      .step { grid-template-columns: 38px 1fr; gap: 12px; }
+      .step p { grid-column: 2; }
+      .contact h2 { font-size: 40px; }
+      .contact-grid { right: -150px; }
+      .footer-row { flex-direction: column; gap: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; transform: none; }
+      .grid-reveal { clip-path: inset(0); opacity: .8; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Northline home"><span class="brand-mark" aria-hidden="true"></span>NORTHLINE</a>
+      <div class="nav-links">
+        <a href="#services">Expertise</a>
+        <a href="#projects">Selected work</a>
+        <a href="#approach">Approach</a>
+      </div>
+      <a class="nav-cta" href="#contact">Let’s talk <span aria-hidden="true">&#8599;</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow">Construction / Architecture / Advisory</div>
+        <h1 id="hero-title">Complex builds.<br><span>Clear direction.</span></h1>
+        <p class="hero-intro">Independent construction consultancy bringing design, delivery and detail into alignment, from the first brief to the final handover.</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#services">Explore our expertise <span aria-hidden="true">&#8594;</span></a>
+          <a class="text-link" href="#projects">See selected work</a>
+        </div>
+      </div>
+      <div class="hero-image" aria-label="Contemporary building under construction">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Construction team working on a large building structure" fetchpriority="high">
+        <div class="hero-grid grid-reveal from-right" aria-hidden="true"></div>
+        <div class="hero-coord">BIM / COORDINATION / 01—04</div>
+        <div class="hero-stamp">Built environment<br><strong>Better connected</strong></div>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="Our focus">
+      <div class="facts-row wrap">
+        <div class="fact"><strong>One clear line</strong><span>From concept to completion</span></div>
+        <div class="fact"><strong>Design-led</strong><span>Architecture + delivery</span></div>
+        <div class="fact"><strong>Model-informed</strong><span>BIM coordination</span></div>
+        <div class="fact"><strong>People-first</strong><span>Practical collaboration</span></div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="services">
+      <div class="section-head reveal">
+        <div><div class="eyebrow">01 / What we do</div><h2>Good decisions, built into the process.</h2></div>
+        <p>We help clients navigate the interfaces between design intent, project information and construction reality, keeping the whole picture in view.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service reveal">
+          <div class="service-num"><span>01 / DESIGN</span><span>↗</span></div>
+          <div class="service-art service-art--plan grid-reveal" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h3>Architecture &amp; design management</h3>
+          <p>Shape a coherent brief, coordinate disciplines and protect design quality as decisions take form.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service-num"><span>02 / MODEL</span><span>↗</span></div>
+          <div class="service-art service-art--model grid-reveal from-bottom" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h3>BIM &amp; information coordination</h3>
+          <p>Make project information useful, connected and ready to support confident decisions on site.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service-num"><span>03 / DELIVERY</span><span>↗</span></div>
+          <div class="service-art service-art--build grid-reveal from-right" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <h3>Construction project advisory</h3>
+          <p>Bring oversight to programme, interfaces and delivery risks from early planning through handover.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">02 / Selected work</div><h2>Every line has a place.</h2></div>
+          <p>Different sites, teams and constraints. The common thread is a joined-up view of how the work gets made.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project reveal">
+            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&amp;fit=crop&amp;w=1200&amp;q=82" alt="Modern institutional building with a sculptural white facade" loading="lazy">
+            <div class="project-lines grid-reveal from-right" aria-hidden="true"></div>
+            <div class="project-info"><span>Architecture / Design coordination</span><h3>Spaces with purpose</h3><p>Connecting design ambition with buildable detail.</p></div>
+          </article>
+          <article class="project reveal">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=1000&amp;q=82" alt="Glass and steel high-rise seen from street level" loading="lazy">
+            <div class="project-lines grid-reveal from-bottom" aria-hidden="true"></div>
+            <div class="project-info"><span>Commercial / BIM advisory</span><h3>Clarity at scale</h3><p>Coordinated information for complex environments.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap approach" id="approach">
+      <div class="approach-aside reveal">
+        <div class="eyebrow">03 / How we work</div>
+        <h2>See the whole.<br>Resolve the detail.</h2>
+        <p>Construction is a team effort. We make the information between people and disciplines easier to work with.</p>
+        <div class="approach-art grid-reveal from-bottom" aria-label="BIM coordination section drawing"></div>
+      </div>
+      <div class="steps">
+        <article class="step reveal"><div class="step-num">01</div><h3>Understand the brief</h3><p>Listen closely, map the constraints and agree what success needs to look like.</p></article>
+        <article class="step reveal"><div class="step-num">02</div><h3>Connect the information</h3><p>Bring drawings, models and project teams together around the decisions that matter.</p></article>
+        <article class="step reveal"><div class="step-num">03</div><h3>Support delivery</h3><p>Stay close to the work, surface issues early and help the team keep moving.</p></article>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="wrap contact-row">
+        <div class="contact-grid grid-reveal from-right" aria-hidden="true"></div>
+        <div class="reveal"><div class="eyebrow">04 / Start a conversation</div><h2>Let’s get the right people around the table.</h2></div>
+        <div class="reveal"><p>Have a project taking shape? Tell us where you are and what you’re working through.</p><a class="button-primary" href="mailto:?subject=Construction%20project%20enquiry">Talk through your project <span aria-hidden="true">&#8594;</span></a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-row"><span class="footer-brand">NORTHLINE / BUILT ENVIRONMENT ADVISORY</span><span>Construction, considered.</span><a href="#top">Back to top &#8593;</a></div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll('.grid-reveal, .reveal').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>

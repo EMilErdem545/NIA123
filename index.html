@@ -39,7 +39,17 @@
     .site-header { height: 76px; display: flex; align-items: center; border-bottom: 1px solid var(--line); position: relative; z-index: 3; }
     .nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
     .brand { display: inline-flex; gap: 11px; align-items: center; font-weight: 700; font-size: 15px; letter-spacing: .08em; }
-    .brand-mark { width: 24px; height: 24px; position: relative; border: 1px solid var(--cyan); display: inline-block; transform: rotate(45deg); }
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      display: inline-block;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: rgba(123, 215, 208, .06);
+      box-shadow: inset 0 0 0 1px rgba(123, 215, 208, .4);
+      padding: 4px;
+    }
+    .brand-mark { width: 24px; height: 24px; position: relative; border: 1px solid var(--cyan); display: none; transform: rotate(45deg); }
     .brand-mark::before, .brand-mark::after { content: ""; position: absolute; background: var(--cyan); }
     .brand-mark::before { width: 1px; height: 34px; left: 11px; top: -6px; }
     .brand-mark::after { height: 1px; width: 34px; top: 11px; left: -6px; }
@@ -215,7 +225,11 @@
 <body>
   <header class="site-header">
     <nav class="nav wrap" aria-label="Hovednavigation">
-      <a class="brand" href="#top" aria-label="Niarådgivning – forsiden"><span class="brand-mark" aria-hidden="true"></span>Niarådgivning</a>
+      <a class="brand" href="#top" aria-label="Niarådgivning – forsiden">
+        <img class="brand-logo" src="assets/logo.svg" alt="Niarådgivning logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Niarådgivning
+      </a>
       <div class="nav-links">
         <a href="#services">Ydelser</a>
         <a href="#projects">Projekter</a>

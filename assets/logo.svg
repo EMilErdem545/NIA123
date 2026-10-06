@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Niarådgivning logo</title>
+  <desc id="desc">Modern geometric branding mark</desc>
+  <rect width="160" height="160" rx="24" fill="#071c2c"/>
+  <g fill="none" stroke="#7bd7d0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M44 44v72h16l40-47v47h16V44H100L60 91V44H44z"/>
+    <path d="M110 46h16v68" opacity="0.9"/>
+    <path d="M46 116h68" opacity="0.8"/>
+  </g>
+  <circle cx="124" cy="112" r="8" fill="#d5ef82"/>
+</svg>
